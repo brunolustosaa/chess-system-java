@@ -1,4 +1,4 @@
-package cless;
+package chess;
 
 public enum Color {
 
