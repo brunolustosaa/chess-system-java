@@ -5,7 +5,6 @@ import boardgame.Piece;
 import boardgame.Position;
 import chess.pieces.King;
 import chess.pieces.Rook;
-import javafx.scene.layout.Border;
 
 public class ChessMatch {
 
@@ -24,6 +23,12 @@ public class ChessMatch {
 			}
 		}
 		return mat;
+	}
+	
+	public boolean[][] possibleMoves(ChessPosition sourcePosition) {
+		Position position = sourcePosition.toPosition();
+		validadeSourcePosition(position);
+		return board.piece(position).possibleMoves();
 	}
 	
 	public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition){		
@@ -52,7 +57,7 @@ public class ChessMatch {
 	}
 	
 	private void validadeTargetPosition(Position source, Position target) {
-		if(!board.piece(source).possibleMoves(target)) {
+		if(!board.piece(source).possibleMove(target)) {
 			throw new ChessException("The chosen piece can't move the torget position");
 		}
 	}
